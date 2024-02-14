@@ -1,0 +1,168 @@
+<link href="/css/dx.light.css" rel="stylesheet" type="text/css">
+<script src="/scripts/dx.all.js"></script>
+<style>
+    .dx-datagrid-nowrap {
+        white-space: ;
+    }
+</style>
+<script>
+    var ordergrid, selectedOrderdId = 0;
+    function confirmChangeOrderStatus() {
+        $.ajax({
+            url: '/siteadmin/updateorderStatus/' + parseInt($("#confirmOrderStatus").attr("data-orderid")),
+            data: { orderstatus: $("#orderstatuselect").val() },
+            type: 'PUT',
+            success: function (result) {
+                if (result) {
+                    location.reload();
+                }
+                // Do something with the result
+            }
+        });
+    }
+    $(document).ready(function () {
+        $("#orderstatuselect").change(function () {
+            if (selectedOrderdId > 0) {
+                var status = this.value;
+                $("#confirmOrderStatus").attr("data-orderid", selectedOrderdId);
+                var myModal = new bootstrap.Modal(document.getElementById('dvConfirmStatusPopup'), { keyboard: false });
+                myModal.show();
+            }
+            else {
+                alert("select oder");
+                $('#orderstatuselect').prop('selectedIndex', 0);
+            }
+        });
+    });
+
+    $(function () {
+        ordergrid = $("#orderGrid").dxDataGrid({
+            dataSource: {{{ orders }}},
+        keyExpr: "orderid",
+        allowColumnResizing: true,
+        showBorders: true,
+        columnResizingMode: 'nextColumn',
+        columnMinWidth: 50,
+        columnAutoWidth: true,
+        searchPanel: { visible: true },
+        allowColumnReordering: false,
+        showBorders: true,
+        selection: {
+        mode: 'single',
+    },
+        sorting: {
+        mode: "multiple" //| "none"
+    }, filterRow: {
+        visible: true,
+        applyFilter: 'auto',
+    },
+        headerFilter: {
+        visible: true,
+    }, onSelectionChanged(selectedItems) {
+        const data = selectedItems.selectedRowsData[0];
+        selectedOrderdId = data.orderid;
+    },
+
+        columns: [
+        {
+            dataField: "prodName",
+            caption: "Product",
+            cellTemplate(container, options) {
+                let divStr = '<div><a href="/product/' + options.data.productId + '" ><img style="height: 130px;" src="/images/' + options.data.productId + '/' + options.data.imagepath + '"/><span style="display: inline-block;margin-left: 20px;font-size: 15px;font-weight: 500;">' + options.data.productTitle + '</span></a></div>';
+                $(divStr).appendTo(container);
+            }
+        },
+        {
+            dataField: "total",
+            cellTemplate(container, options) {
+                var div = "<div class='row'>" +
+                    "<div class='col-5'>Price Per Day: </div>" +
+                    "<div class='col-2'>" + options.data.price + "</div>" +
+                    "</div>" +
+                    "<div class='row'>" +
+                    "<div class='col-5'>Deposite: </div>" +
+                    "<div class='col-2'>" + options.data.deposite + "</div>" +
+                    "</div>" +
+                    "<div class='row' style='font-weight: bold;'>" +
+                    "<div class='col-6'>Total Amount: </div>" +
+                    "<div class='col-2'>" + (parseFloat(options.data.price) + parseFloat(options.data.deposite)) + "</div>" +
+                    "</div>";
+                $(div).appendTo(container);
+            }
+        },
+        {
+            dataField: "bookto",
+            caption: "Hire date",
+            cellTemplate(container, options) {
+                var div = '<div>' + new Date(options.data.bookfrom).toLocaleDateString() + '<span style="font-weight: bold;"> To </span>' + new Date(options.data.bookto).toLocaleDateString() +
+                    '</div>';
+                $(div).appendTo(container);
+            }
+        },
+        {
+            dataField: "orderdate",
+            dataType: "date"
+        },
+        {
+            dataField: "username",
+            cellTemplate(container, options) {
+                var div = '<div>' + options.data.username + '</div>';
+                $(div).appendTo(container);
+            }
+        },
+        {
+            dataField: "mobile",
+            cellTemplate(container, options) {
+                var div = '<div>' + options.data.mobile + '</div>';
+                $(div).appendTo(container);
+            }
+        },
+        {
+            dataField: "cstatus"
+        }]
+    });
+});
+</script>
+<div class="container">
+    <div><strong>Order History</strong></div>
+    <div class="row mt-5 mb-5">
+        <div class="col-2">Order Status</div>
+        <div class="col-2">
+            <select id="orderstatuselect" class="form-select">
+                <option value="0" selected>Select Order Status</option>
+                <option value="Confirm">Confirm</option>
+                <option value="Delivered">Delivered</option>
+                <option value="InTransit">In Transit</option>
+                <option value="Cancel">Cancel</option>
+                <option value="Completed">Completed</option>
+            </select>
+        </div>
+    </div>
+    <div class="dx-viewport">
+        <div id="orderGrid"></div>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="dvConfirmStatusPopup">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title"><strong>Order Status Changing</strong></h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body">
+                Are you want to change order status?
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">CANCEL</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" id="confirmOrderStatus"
+                    onclick="confirmChangeOrderStatus()">YES</button>
+            </div>
+
+        </div>
+    </div>
+</div>

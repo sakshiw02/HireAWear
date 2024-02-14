@@ -1,0 +1,146 @@
+<link href="/css/dx.light.css" rel="stylesheet" type="text/css">
+<script src="/scripts/dx.all.js"></script>
+<style>
+  .carousel-caption{
+  }
+  body{background: rgb(253,187,45);
+background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(34,193,195,1) 99%);}
+</style>
+
+<div class="justify-content-center">
+    <div class="row" style="height: 500px;">
+        <div class="col-6">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <img src="/images/{{prod.productId}}/{{prod.imagepath}}" style="height: 500px; width:500px;"/>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <form action="/ordered" method="post" onsubmit="return confirm('Do you really want to proceed this order?');">
+                <input type="hidden" name="productId" value="{{prod.productId}}">
+                <h3 class="product_title">
+                    {{prod.productTitle}}
+                </h3>
+                <h6 class="product_title">
+                    {{prod.category}}
+                </h6>
+                <div class="mt-4">
+                    <b>Price : </b>
+                    <span style="font-size: 22px; color: #191b1b;font-weight: bold;">
+                        &#8377;{{prod.price}}
+                    </span>
+                    <span>per day</span>
+                </div>
+                <div class="mt-1">
+                    <b>Deposite : </b>
+                    <span style="font-size: 22px; color: #0c1213;">
+                        &#8377;3000
+                    </span>
+                </div>
+                <div class="mt-4">
+                    <b>
+                        Available Size : {{prod.size}}
+                    </b>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-3"><strong>Hire Dates</strong></div>
+                    <div class="col-3">
+                        <div id="fromdate"></div>
+                    </div>
+                    <div class="col-1" style="text-align: center;"><strong>To</strong></div>
+                    <div class="col-3">
+                        <div id="todate"></div>
+                    </div>
+                </div>
+                <div class="mt-1 d-none" id="divDateErrorMsg" style="color: red; font-weight: :600;">
+                    To date should be greater than Report From date.
+                </div>
+                <div class="mt-4">
+                    <button id="addToCart" class="btn btn-primary" disabled>Order</button>
+                </div>
+                <div class="mt-4">
+                    <p style="margin: 0 0 1.1em;">{{prod.productDescription}}</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        console.log('ok');
+        const now = new Date();
+        now.setDate(now.getDate() + 1);
+        const toDate = new Date();
+        toDate.setDate(now.getDate() + 2);
+
+        $('#fromdate').dxDateBox({
+            type: 'date',
+            name:'bookfrom',
+            pickerType: 'calendar',
+            value: now,
+            min: now,
+            width: "172px",
+            elementAttr: {
+                "class": "dxDatebox-FromDate"
+            },
+            onValueChanged: function (e) {
+                validateToFromDate();
+            }
+        });
+
+        $('#todate').dxDateBox({
+            type: 'date',
+            name:'bookto',
+            pickerType: 'calendar',
+            value: toDate,
+            min: now,
+            width: "172px",
+            elementAttr: {
+                "class": "dxDatebox-ToDate"
+            },
+            onValueChanged: function (e) {
+                validateToFromDate();
+            }
+        });
+
+        validateToFromDate();
+    });
+
+    function validateToFromDate() {
+        console.log("----------------------------------------------------------");
+        console.log("todate");
+        console.log($("#todate").dxDateBox("instance").option("value"));
+        console.log("fromdate");
+        console.log($("#fromdate").dxDateBox("instance").option("value"));
+
+        let todateVal = $("#todate").dxDateBox("instance").option("value");
+        let fromdateVal = $("#fromdate").dxDateBox("instance").option("value");
+        console.log(todateVal.getTime() >= fromdateVal.getTime())
+        console.log("----------------------------------------------------------");
+        if (todateVal.getTime() >= fromdateVal.getTime()) {
+            $("#divDateErrorMsg").addClass("d-none");
+            $("#addToCart").prop("disabled", false);
+        }
+        else {
+            $("#divDateErrorMsg").removeClass("d-none");
+            $("#addToCart").prop("disabled", true);
+        }
+    }
+
+    function getDatesInRange(startDate, endDate) {
+        const date = new Date(startDate.getTime());
+
+        const dates = [];
+
+        while (date <= endDate) {
+            dates.push(new Date(date));
+            date.setDate(date.getDate() + 1);
+        }
+
+        return dates;
+    }
+
+
+</script>

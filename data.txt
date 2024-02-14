@@ -1,0 +1,147 @@
+{
+  
+    "productTitle": "Sherwami",
+    "productDescription": "Indian Traditional Wear",
+    "imagepath": "/image/images/1.jpg",
+    "category": "Traditional",
+    "size": "36",
+    "price": "1100",
+    "uploadedBy": "Ankush Kathale",
+    "gender": "Male",
+},
+{
+  
+    "productTitle": "Blazer",
+    "productDescription": "Wedding Wear",
+    "imagepath": "/image/images/2.jpg",
+    "category": "Modern",
+    "size": "32",
+    "price": "600",
+    "uploadedBy": "Roshan Adhau",
+    "gender": "Male",
+},
+{
+  
+    "productTitle": "Kurta",
+    "productDescription": "Mens Casual Wear",
+    "imagepath": "/image/images/3.jpg",
+    "category": "Traditional",
+    "size": "32",
+    "price": "300",
+    "uploadedBy": "Roshan Adhau",
+    "gender": "Male",
+},
+{
+  
+    "productTitle": "Indo-Western Suit",
+    "productDescription": "Attractive Mens Wedding Wear",
+    "imagepath": "/image/images/4.jpg",
+    "category": "Modern",
+    "size": "32",
+    "price": "600",
+    "uploadedBy": "Roshan Adhau",
+    "gender": "Male",
+},
+{
+  
+    "productTitle": "Mens Jacket",
+    "productDescription": "Mens Party Wear",
+    "imagepath": "/image/images/5.jpg",
+    "category": "Traditional",
+    "size": "34",
+    "price": "500",
+    "uploadedBy": "Roshan Adhau",
+    "gender": "Male",
+},
+{
+  
+    "productTitle": "Lehenga",
+    "productDescription": "Womens Party Wear",
+    "imagepath": "/image/images/6.jpg",
+    "category": "Traditional",
+    "size": "30",
+    "price": "700",
+    "uploadedBy": "Roshan Adhau",
+    "gender": "Female",
+},
+{
+  
+    "productTitle": "Slik Saree",
+    "productDescription": "Beautiful Silk Saree",
+    "imagepath": "/image/images/7.jpg",
+    "category": "Traditional",
+    "size": "32",
+    "price": "450",
+    "uploadedBy": "Ankush Kathale",
+    "gender": "Female",
+},
+{
+  
+    "productTitle": "Jumpsuit",
+    "productDescription": "Textured Jumpsuit",
+    "imagepath": "/image/images/8.jpg",
+    "category": "Modern",
+    "size": "32",
+    "price": "550",
+    "uploadedBy": "Ankush Kathale",
+    "gender": "Female",
+},
+{
+  
+    "productTitle": "Kurti",
+    "productDescription": "Attractive Kurti",
+    "imagepath": "/image/images/9.jpg",
+    "category": "Traditional",
+    "size": "30",
+    "price": "300",
+    "uploadedBy": "Roshan Adhau",
+    "gender": "Female",
+},
+{
+  
+    "productTitle": "Womens Jacket",
+    "productDescription": "Womens Jacket For Specials",
+    "imagepath": "/image/images/10.jpg",
+    "category": "Modern",
+    "size": "32",
+    "price": "400",
+    "uploadedBy": "Roshan Adhau",
+    "gender": "Female",
+},
+{
+  
+    "productTitle": "Churidar",
+    "productDescription": "Indian Casual Wear",
+    "imagepath": "/image/images/11.jpg",
+    "category": "Traditional",
+    "size": "30",
+    "price": "500",
+    "uploadedBy": "Roshan Adhau",
+    "gender": "Female",
+},
+{
+  
+    "productTitle": "Panjabi Dress",
+    "productDescription": "Indian Traditional Wear",
+    "imagepath": "/image/images/12.jpg",
+    "category": "Traditional",
+    "size": "32",
+    "price": "300",
+    "uploadedBy": "Ankush Kathale",
+    "gender": "Female",
+},
+{
+  
+    "productTitle": "Womens Jacket",
+    "productDescription": "Jeans Special Jacket",
+    "imagepath": "/image/images/13.jpg",
+    "category": "Traditional",
+    "size": "30",
+    "price": "400",
+    "uploadedBy": "Ankush Kathale",
+    "gender": "Female",
+}
+
+
+
+

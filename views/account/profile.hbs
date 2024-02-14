@@ -1,0 +1,55 @@
+<style>
+    .col-form-label{
+        font-weight: bolder;
+    }
+    .header{font-size: 21px; font-weight: 900; color: white; background-color: gray; border-top-left-radius: 9px; border-top-right-radius: 9px; padding-left: 11px; height: 50px; padding-top: 9px;}
+</style>
+<div class="container" style="border: 1px solid;border-radius: 10px; width: 45%;">
+    <div class="">
+        <div class="row header">
+            My Profile
+        </div>
+        <div class="mb-3 row">
+            <label for="fullNameId" class="col-sm-3 col-form-label">Full Name</label>
+            <div class="col-sm-4">
+            <input type="text" readonly class="form-control-plaintext" id="fullNameId" value="{{user.firstName}} {{user.lastName}}">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="emailId" class="col-sm-3 col-form-label">Email Address</label>
+            <div class="col-sm-6">
+            <input type="text" readonly class="form-control-plaintext" id="emailId" value="{{user.username}}">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="mobileNumberId" class="col-sm-3 col-form-label">Mobile Number</label>
+            <div class="col-sm-6">
+            <input type="text" readonly class="form-control-plaintext" id="mobileNumberId" value="{{user.mobile}}">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="addressId" class="col-sm-3 col-form-label">Address</label>
+            <div class="col-sm-6">
+            <textarea readonly class="form-control-plaintext" id="addressId" >{{user.address}}</textarea>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="pinCodeId" class="col-sm-3 col-form-label">Pin Code</label>
+            <div class="col-sm-6">
+            <input type="text" readonly class="form-control-plaintext" id="pinCodeId" value="{{user.pincode}}">
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="cityId" class="col-sm-3 col-form-label">City</label>
+            <div class="col-sm-6">
+            <input type="text" readonly class="form-control-plaintext" id="cityId" value="{{user.city}}">
+            </div>
+        </div>
+        {{!-- <div class="mb-3 row">
+            <label for="stateId" class="col-sm-3 col-form-label">State</label>
+            <div class="col-sm-6">
+            <input type="text" readonly class="form-control-plaintext" id="stateId" value="{{user.state}}">
+            </div>
+        </div> --}}
+    </div>
+</div>

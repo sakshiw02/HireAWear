@@ -1,0 +1,30 @@
+<link href="/css/productlist.css" rel="stylesheet" type="text/css">
+{{!-- <h1>Male Products</h1> --}}
+{{!-- <div class="cards-container">
+    <div class="row">
+        {{#each prod}}
+            {{> productcart this}}
+        {{/each}}
+    </div>
+</div> --}}
+<style>
+  .carousel-caption{
+  }
+  body{background: rgb(253,187,45);
+background: linear-gradient(0deg, rgba(253,187,45,1) 0%, rgba(34,193,195,1) 99%);}
+</style>
+<div style="background-image: url(images/MenBanner.png);
+    width: 100%;
+    height: 400px;
+    display:inline-block;
+
+    background-repeat: no-repeat;
+    background-size: cover;">
+</div>
+<div class="container-fluid pt-5">
+	<div class="row px-xl-5 pb-3">
+		{{#each prod}}
+            {{> productcart this}}
+        {{/each}}
+	</div>
+</div>

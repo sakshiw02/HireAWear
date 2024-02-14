@@ -1,0 +1,122 @@
+<script src="/scripts/addproduct.js"></script>
+{{!-- action="{{apiURl}}/product" --}}
+<div>
+    <form  enctype="multipart/form-data" action="/siteadmin/addproduct" method="post">
+        <div class="row mb-3">
+            <label class="col-md-4 text-end" for="productTitle">TITLE</label>
+            <div class="col-md-4">
+                <input id="productTitle" name="productTitle" placeholder="PRODUCT TITLE" class="form-control input-md"
+                    type="text" required>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-md-4 text-end" for="productdesc">DESCRIPTION</label>
+            <div class="col-md-4">
+                <input id="productdesc" name="productDescription" placeholder="DESCRIPTION"
+                    class="form-control input-md" type="text" required>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-md-4 text-end" for="category">Category</label>
+            <div class="col-md-4">
+                <select id="category" name="category" class="form-select form-select-md mb-3"
+                    aria-label=".form-select-lg example" required>
+                    <option value="Modern">Modern</option>
+                    <option value="Traditional">Traditional</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-md-4 text-end" for="productsize">Size</label>
+            <div class="col-md-4">
+                <input id="productsize" name="size" placeholder="size" class="form-control input-md" type="text"
+                    required>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-md-4 text-end" for="productPrice">Price</label>
+            <div class="col-md-4">
+                <input id="productPrice" name="price" placeholder="Price" class="form-control input-md" type="text"
+                    required>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-md-4 text-end" for="genderId">Gender</label>
+            <div class="col-md-4">
+                <select id="genderId" name="gender" class="form-select form-select-md mb-3"
+                    aria-label=".form-select-lg example" required>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+        </div>
+
+        {{!-- <div class="row mb-3">
+            <label class="col-md-4 text-end" for="productname">NAME</label>
+            <div class="col-md-4">
+                <input id="productname" name="name" placeholder="PRODUCT NAME" class="form-control input-md"
+                    type="text">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label class="col-md-4 text-end" for="productprice">PRICE</label>
+            <div class="col-md-4">
+                <input id="productprice" name="pice" placeholder="PRODUCT DESCRIPTION" class="form-control input-md"
+                    type="text">
+            </div>
+            <div class="col-md-4">
+                in INR
+            </div>
+        </div> --}}
+        <div class="row mb-3">
+            <label class="col-md-4 text-end" for='files'>Select files</label>
+            <div class="col-md-4">
+                <input type="file" id="file" name="prodimg" accept="image/png, image/jpeg"
+                    onchange="return fileValidation()" required />
+            </div>
+            <div class="col-md-4">
+                <div id="imagePreview"></div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <button class="submit-btn" type='submit'>Upload</button>
+                {{!-- <button class="submit-btn" onclick="addProduct()">Upload</button> --}}
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    function fileValidation() {
+        var fileInput =
+            document.getElementById('file');
+
+        var filePath = fileInput.value;
+
+        // Allowing file type
+        var allowedExtensions =
+            /(\.jpg|\.jpeg|\.png)$/i;
+
+        if (!allowedExtensions.exec(filePath)) {
+            alert('Invalid file type');
+            fileInput.value = '';
+            return false;
+        }
+        else {
+            // Image preview
+            if (fileInput.files && fileInput.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById(
+                        'imagePreview').innerHTML =
+                        '<img style="height:200px;" src="' + e.target.result
+                        + '"/>';
+                };
+
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+    }
+</script>

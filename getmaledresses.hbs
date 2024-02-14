@@ -1,0 +1,9 @@
+<link href="/css/productlist.css" rel="stylesheet" type="text/css">
+<h1>Male Products</h1>
+<div class="container-fluid pt-5">
+	<div class="row px-xl-5 pb-3">
+		{{#each products}}
+            {{> productcart this}}
+        {{/each}}
+	</div>
+</div>

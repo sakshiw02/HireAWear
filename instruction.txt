@@ -1,0 +1,226 @@
+register users : // POST
+
+Request: 
+
+http://localhost:8080/users/register
+
+Request :
+
+{
+  
+  "firstName" : "prashant",
+  "lastName" : "Kadwe",
+  "username" : "prashant25",
+  "role"     : "user",
+  "email" : "deven@gmail.com",
+  "mobile" : "9612312345",
+  "gender" : "Male",
+  "dob" : "2000-12-09",
+  "address" : "Alandi",
+  "city" : "Pune",
+  "pincode" : "400145",
+  "password" : "prashant22"
+}
+
+Response :
+
+{
+  "message": "Registration successful"
+}
+
+
+--------------------------------------------------------------------
+
+login users : // POST
+
+Request: 
+
+http://localhost:8080/users/authenticate
+
+{
+  
+  "username" : "anup22",
+  "password" : "anup22"
+}
+
+Response:
+
+{
+  "id": 3,
+  "firstName": "Anup",
+  "lastName": "Madghe",
+  "username": "anup22",
+  "email": "anup@gmail.com",
+  "mobile": "9612312345",
+  "gender": "Male",
+  "dob": "2020-12-09T00:00:00.000Z",
+  "address": "Arjun Nager",
+  "city": "Amravati",
+  "pincode": "444905",
+  "createdAt": "2022-12-06T14:42:37.349Z",
+  "updatedAt": "2022-12-06T14:42:37.349Z",
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjMsImlhdCI6MTY3MDMzODA3MSwiZXhwIjoxNjcwOTQyODcxfQ.MiXBSf08KUZf54HeFlDZ5OVmDmasRGt47Nym0FsG7II"
+}
+
+---------------------------------------------------------------------------
+
+Get all products // GET
+
+Request :
+http://localhost:8080/products
+
+------------------------------------------------------------------------------
+
+//Register Product //POST
+
+Request :
+
+http://localhost:8080/product
+
+{
+  
+    "productTitle": "Mens Jeans",
+    "productDescription": "Mens Jeans",
+    "imagepath": "/image/images/15.jpg",
+    "category": "Modern",
+    "size": "32",
+    "price": "300",
+    "uploadedBy": "Ankush Kathale",
+    "gender": "Female",
+    "availability" : "Not Available"
+    
+  
+}
+
+Response :
+
+[
+  {
+    "productId": 15
+  }
+]
+
+------------------------------------------------------------------------------------------
+
+//Get all products //GET
+
+Request :
+
+http://localhost:8080/products
+
+-----------------------------------------------------------------------------------------
+
+//Get one products //GET
+
+Request :
+
+http://localhost:8080/product/1
+
+---------------------------------------------------------------------------------------
+//Update one products //PUT
+
+Request :
+
+http://localhost:8080/product/1
+
+-----------------------------------------------------------------------------------------
+//Add to cart //PUT
+
+http://localhost:8080/addtocart/13  (13 is product id)
+
+Request :
+
+{
+  
+  "cartByUserID": 1
+  
+}
+
+Response :
+Succesfully added to your cart
+
+-----------------------------------------------------------------------------------------
+//Book product //PUT
+
+Request : 
+
+http://localhost:8080/bookproduct/14
+
+{
+  
+  "availability" : "Not Available",
+  "bookingStatus" : "Completed",
+  "bookedByUserID": 1,
+  "bookedOn":"2022-12-07",
+  "bookedto":"2022-12-09"
+  
+}
+
+Response :
+You have Succesfully booked product
+
+---------------------------------------------------------------------------------------
+//Cart Product of perticular user //GET
+
+Request : 
+
+http://localhost:8080/cartproduct/1    (1 user id)
+
+Response : 
+
+[
+  {
+    "productId": 2,
+    "productTitle": "Blazer",
+    "productDescription": "Wedding Wear",
+    "imagepath": "/image/images/2.jpg",
+    "category": "Modern",
+    "size": "32",
+    "price": "600",
+    "bookedOn": "1900-01-01T00:00:00.000Z"
+  },
+  {
+    "productId": 3,
+    "productTitle": "Kurta",
+    "productDescription": "Mens Casual Wear",
+    "imagepath": "/image/images/3.jpg",
+    "category": "Traditional",
+    "size": "32",
+    "price": "400",
+    "bookedOn": "1900-01-01T00:00:00.000Z"
+  }
+]
+
+----------------------------------------------------------------------------------------------
+//Get User Booking History//GET
+
+Request:
+
+http://localhost:8080/historyproducts
+
+{
+  
+  "userID": 1
+  
+}
+
+Response:
+
+[
+  {
+    "productId": 20,
+    "productTitle": "something",
+    "bookfrom": "2022-12-07T00:00:00.000Z",
+    "bookto": "2022-12-09T00:00:00.000Z",
+    "cstatus": "Completed"
+  }
+]
+
+
+
+-----------------------------------------------------------------------------------------------
+// Delete Product // DELETE
+
+http://localhost:8080/product/1
+
+---------------------------------------------------------------------------------------------

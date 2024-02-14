@@ -1,0 +1,69 @@
+<link href="/css/dx.light.css" rel="stylesheet" type="text/css">    
+<script src="/scripts/dx.all.js"></script>
+<style>
+    .dx-datagrid-headers{
+        display: none;
+    }
+    .dx-datagrid-nowrap{
+        white-space:;
+    }
+</style>
+<script>
+    console.log({{{orders}}});
+  
+$(function() {
+    $("#orderGrid").dxDataGrid({
+        dataSource: {{{orders}}},
+        keyExpr: "productId",        
+        searchPanel: { visible: true },
+        allowColumnReordering: false,
+        showBorders: false,sorting: {
+            mode: "none" // or "multiple" | "none"
+        },
+        columns: [ 
+        {
+            dataField: "prodName",
+            caption:"Product",
+            cellTemplate(container, options) {
+                let divStr = '<div><a href="/product/'+options.data.productId+'" ><img style="height: 130px;" src="/images/'+options.data.productId+'/'+options.data.imagepath+'"/><span style="display: inline-block;margin-left: 20px;font-size: 15px;font-weight: 500;">'+options.data.productTitle+'</span></a></div>';
+                $(divStr).appendTo(container);
+            }
+        }, 
+        {
+            dataField: "total",
+            cellTemplate(container, options) {
+                var div = "<div class='row'>" + 
+                            "<div class='col-5'>Price Per Day: </div>"+
+                            "<div class='col-2'>" + options.data.price + "</div>"+
+                          "</div>" + 
+                          "<div class='row'>" + 
+                            "<div class='col-5'>Deposite: </div>"+
+                            "<div class='col-2'>" + options.data.deposite + "</div>"+
+                          "</div>"+ 
+                          "<div class='row' style='font-weight: bold;'>" + 
+                            "<div class='col-5'>Total Amount: </div>"+
+                            "<div class='col-2'>" + (parseFloat(options.data.price) + parseFloat(options.data.deposite)) + "</div>"+
+                          "</div>";
+                $(div).appendTo(container);
+            }
+        }, 
+        {
+            dataField: "bookto",
+            cellTemplate(container, options) {
+                var div = '<div>' +new Date(options.data.bookfrom).toLocaleDateString()  + '<span style="font-weight: bold;"> To </span>' + new Date(options.data.bookto).toLocaleDateString()+
+                          '</div>';
+                $(div).appendTo(container);
+            }
+        },
+        {
+            dataField: "cstatus"
+        }]
+    });
+});
+</script>
+<div class="container">
+    <div><strong>Order History</strong></div>
+    <div class="dx-viewport">
+        <div id="orderGrid"></div>
+    </div>
+</div>

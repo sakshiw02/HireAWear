@@ -1,0 +1,82 @@
+<section>
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col"></div>
+            <div class="col-6">
+                <h1>Change Password</h1>
+            </div>
+            <div class="col"></div>
+        </div>
+        <form action="/users/verify" method="post" onsubmit="return passwordCompare();">
+            <div class="row">
+                <div class="col">
+                </div>
+                <div class="col-6">
+                    <div class="form-floating">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Password"
+                            required>
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="form-floating mt-3">
+                        <input name="confirmpassword" type="password" class="form-control" id="confirmPassword"
+                            placeholder="Confirm Password" required>
+                        <label for="confirmPassword">Confirm Password</label>
+                    </div>
+                </div>
+                <div class="col">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-4">
+                </div>
+                <div class="col-4">
+                    <button class="btn btn-primary w-100">Reset</button>
+                </div>
+                <div class="col-4">
+                </div>
+            </div>
+
+        </form>
+        <div id="errorMsg" class="row mt-3 d-none">
+            <div class="col-4">
+            </div>
+            <div class="col-4">
+                <div class="form-floating mb-3" style="height: 200px;">
+                    <label style="font-weight: bold; color:red">Password Not match</label>
+                </div>
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+        {{#if err }}<div class="row mt-3">
+            <div class="col-4">
+            </div>
+            <div class="col-4">
+                <div class="form-floating mb-3" style="height: 200px;">
+                    <label style="font-weight: bold; color:red">{{err}}</label>
+                </div>
+            </div>
+            <div class="col-4">
+            </div>
+        </div>
+        {{/if}}
+        </form>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("#errorMsg").addClass("d-none");
+        });
+        function passwordCompare(){
+            let result = false;
+            let passowrd = $("#password").val();
+            let confirmPassword = $("#confirmPassword").val();
+            if(confirmPassword == passowrd){
+                result = true;
+            }
+            else{
+                $("#errorMsg").removeClass("d-none");
+            }
+            return result;
+        }
+    </script>
+</section>

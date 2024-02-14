@@ -1,0 +1,36 @@
+{
+  "name": "channe-mssql-crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "express-session": "^1.17.3",
+    "formidable": "^2.1.1",
+    "fs-extra": "^9.0.1",
+    "hbs": "^4.2.0",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mssql": "^6.2.3",
+    "nodemailer": "^6.9.1",
+    "rootpath": "^0.1.2",
+    "sequelize": "^6.21.0",
+    "tedious": "^14.6.0",
+    "tempdata": "^0.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}

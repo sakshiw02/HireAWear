@@ -1,0 +1,113 @@
+<style>
+    .tacbox {
+        display: block;
+        padding: 1em;
+               border: 3px solid #ddd;
+        background-color: #eee;
+        max-width: 800px;
+    }
+
+    input {
+        height: 2em;
+        width: 2em;
+        vertical-align: middle;
+    }
+</style>
+<section>
+    <div class="container w-50">
+        {{#if err }}
+        <div class="form-floating mb-5">
+            <label style="font-weight: bold; color:red">{{err}}</label>
+        </div>
+        {{/if}}
+
+        <form method="post" action="/users/register">
+            <div class="row g-2 mb-3">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="inputFirstName" name="firstName"
+                            placeholder="First Name" required>
+                        <label for="inputFirstName">First Name*</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="inputLastName" name="lastName"
+                            placeholder="Last Name" required>
+                        <label for="inputLastName">Last Name*</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-1 "><b style="position: absolute; margin-top: 10px;">Gender:</b></div>
+                <div class="col-11">
+                    <select name="gender" class="form-select form-select-lg " aria-label=".form-select-lg example">
+                        <option value="Female" selected>Female</option>
+                        <option value="Male">Male</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="mobileId" name="mobile" minlength="10" maxlength="10" required>
+                <label for="mobileId">Mobile*</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="emailAddressId" name="username"
+                    placeholder="name@example.com" required>
+                <label for="emailAddressId">Email address*</label>
+            </div>
+            <div class="form-floating mb-3">
+                <textarea class="form-control" name="address" placeholder="Leave a address here" id="floatingTextarea"
+                    required></textarea>
+                <label for="floatingTextarea">Address*</label>
+            </div>
+            <div class="row g-3 mb-3">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" name="pincode" id="inputPin" placeholder="Pin Code"
+                            required pattern="[0-9]{6}" maxlength="6" minlength="6">
+                        <label for="inputPin">Pin Code*</label>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" name="city" id="inputCity" placeholder="City" required>
+                        <label for="inputCity">City*</label>
+                    </div>
+                </div>
+                {{!-- <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="inputState" placeholder="State" required>
+                        <label for="inputState">State*</label>
+                    </div>
+                </div> --}}
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password"
+                    required>
+                <label for="floatingPassword">Password*</label>
+            </div>
+            <div class="form-floating mb-3">
+                <div class="tacbox">
+                    <input id="checkbox" type="checkbox" required />
+                    <label for="checkbox"> I agree to these <span style="cursor:pointer; color:blue" onclick='window.open("/users/terms", "", "width=500,height=300");''>Terms and Conditions</span>.</label>
+                </div>
+            </div>
+            {{!-- <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingConfirmPassword" placeholder="Confirm Password"
+                    required>
+                <label for="floatingConfirmPassword">Confirm Password*</label>
+            </div> --}}
+            {{!-- <input type="hidden" name="role" value="user"> --}}
+            <div class="mt-1">
+                <div class="row mb-3">
+                    <div class="col-6"></div>
+                    <div class="col-6 d-flex flex-row-reverse">
+                        <input type="submit" class="btn btn-primary w-25" value="Sign Up" />
+                        <input type="reset" class="btn btn-outline-primary w-25 me-2" value="Reset" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

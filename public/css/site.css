@@ -1,0 +1,28 @@
+/* @import url('../../node_modules/font-awesome/css/font-awesome.min.css'); */
+a{
+  text-decoration: none;
+}
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    }
+    
+    .card-registration .select-arrow {
+    top: 13px;
+    }
+
+    .img-wrapper {  
+        /* width: 400px;
+        height: 400px; */
+        overflow: hidden; 
+      }
+      
+      .inner-img {
+        transition: 0.9s;
+      }
+      
+      .inner-img:hover {
+        transform: scale(1.1);
+      }

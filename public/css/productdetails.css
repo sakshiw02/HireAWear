@@ -1,0 +1,8 @@
+.product_title {
+    position: relative;
+    margin-right: auto;
+    margin-bottom: 8px;
+    margin-top: -10px;
+    width: calc(100% - 80px);
+    z-index: 1;
+}
